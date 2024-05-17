@@ -53,10 +53,10 @@ class FortiGateBase:
         :param str vdom: Name of the virtual domain. Default is `root`.
 
         :param bool logging: Logging REST API response.
-            `Ture` - Enable response logging, `False` - otherwise. Default is `False`.
+            `True` - Enable response logging, `False` - otherwise. Default is `False`.
 
         :param bool logging_error: Logging only the REST API response with error.
-            `Ture` - Enable errors logging, `False` - otherwise. Default is `False`.
+            `True` - Enable errors logging, `False` - otherwise. Default is `False`.
         """
         self.host = str(kwargs.get("host"))
         self.username = str(kwargs.get("username"))
@@ -156,7 +156,7 @@ class FortiGateBase:
 
         # password
         try:
-            response: Response = session.post(
+            response = session.post(
                 url=f"{self.url}/logincheck",
                 data=urlencode([("username", self.username), ("secretkey", self.password)]),
                 timeout=self.timeout,
@@ -219,12 +219,10 @@ class FortiGateBase:
         """
         cookie_prefix = "ccsrftoken"
         if cookies := [o for o in session.cookies if o and o.name.startswith(cookie_prefix)]:
-            token = str(cookies[0].value).strip('"')
+            token = str(cookies[0].value)
+            token = token.strip('"')
             return token
-        else:
-            raise ValueError("Invalid login credentials. Cookie 'ccsrftoken' is missing.")
-
-
+        raise ValueError("Invalid login credentials. Cookie 'ccsrftoken' is missing.")
 
     def _hide_secret(self, string: str) -> str:
         """Hide password, secretkey in text (for safe logging)."""
