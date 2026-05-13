@@ -12,7 +12,7 @@ PYPROJECT_D = vdict.pyproject_d(ROOT)
 def test__python_version():
     """Python version in pyproject.toml."""
     actual = PYPROJECT_D["tool"]["poetry"]["dependencies"]["python"]
-    expected = "^3.11"
+    expected = "^3.12"
     assert actual == expected
 
 
