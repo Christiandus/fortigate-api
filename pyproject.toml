@@ -33,7 +33,7 @@ repository = "https://github.com/vladimirs-git/fortigate-api"
 "Bug Tracker" = "https://github.com/vladimirs-git/fortigate-api/issues"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.11"
 #
 requests = ">=2.34.1"
 vhelpers = ">=0.8.0"
