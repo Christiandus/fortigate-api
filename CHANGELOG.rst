@@ -12,6 +12,11 @@ Unreleased
 
 **New:** `FortiGateAPI.monitor` connectors, to work with all `Monitor API` endpoints.
 
+2.0.9 (2026-05-14)
+------------------
+
+**Updated:** Dependencies
+
 
 2.0.8 (2026-05-13)
 ------------------
