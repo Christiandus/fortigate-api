@@ -13,7 +13,7 @@ Usage
 
 .. code:: python
 
-    """api/v2/cmdb/system/vdom
+    """api/v2/cmdb/system/vdom.
     
     - Create vdom in the Fortigate
     - Get all vdoms from the Fortigate

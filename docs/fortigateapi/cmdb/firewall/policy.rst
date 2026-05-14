@@ -13,7 +13,7 @@ Usage
 
 .. code:: python
 
-    """api/v2/cmdb/firewall/policy
+    """api/v2/cmdb/firewall/policy.
     
     - Create policy in the Fortigate
     - Get all policies from the Fortigate vdom root

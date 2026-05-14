@@ -13,7 +13,7 @@ Usage
 
 .. code:: python
 
-    """api/v2/cmdb/firewall/address
+    """api/v2/cmdb/firewall/address.
     
     - Create address in the Fortigate, in the default vdom root
     - Get all addresses from the Fortigate vdom root
