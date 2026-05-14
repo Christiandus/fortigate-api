@@ -6,7 +6,7 @@ SecretStorage==3.5.0
 Sphinx==9.1.0
 alabaster==1.0.0
 annotated-types==0.7.0
-astroid==4.1.2
+astroid==4.0.4
 attrs==26.1.0
 babel==2.18.0
 backports.tarfile==1.2.0
