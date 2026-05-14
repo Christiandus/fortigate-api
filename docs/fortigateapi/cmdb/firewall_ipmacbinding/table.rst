@@ -13,7 +13,7 @@ Usage
 
 .. code:: python
 
-    """api/v2/cmdb/firewall.ipmacbinding/table
+    """api/v2/cmdb/firewall.ipmacbinding/table.
     
     - Create table in the Fortigate
     - Get all tables from the Fortigate

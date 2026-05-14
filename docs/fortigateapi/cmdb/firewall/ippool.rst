@@ -13,7 +13,7 @@ Usage
 
 .. code:: python
 
-    """api/v2/cmdb/firewall/ippool
+    """api/v2/cmdb/firewall/ippool.
     
     - Creates ip-pool in the Fortigate
     - Get all ip-pools from the Fortigate vdom root

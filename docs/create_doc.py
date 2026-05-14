@@ -13,6 +13,8 @@ from fortigate_api.schema import tools
 from fortigate_api.types_ import LStr, DDAny, DAny
 
 ROOT = Path(__file__).parent.parent
+TEMPLATES_DIR = Path(__file__).parent.joinpath("templates")
+EXAMPLES_DIR = ROOT.joinpath("examples")
 API_CLASS = FortiGateAPI.__name__
 API_DIR = API_CLASS.lower()
 
@@ -33,7 +35,7 @@ def _usage__quickstart() -> str:
     """Get usage example of Quickstart section in index.rst."""
     items: LStr = []
     for file_name in ["fortigateapi.py", "fortigate.py"]:
-        path: Path = ROOT.joinpath(f"examples/quickstart/{file_name}")
+        path: Path = EXAMPLES_DIR.joinpath(f"quickstart/{file_name}")
         text = path.read_text(encoding="utf-8")
         text = h.rst_code(text)
         items.append(text)
@@ -62,7 +64,7 @@ def create_rest_api_cmdb_rst() -> None:
     app_paths: LStr = list(schemas_d)
 
     _create_rest_api_scope(version, scope, app_paths)
-    for app_path, schema_d in schemas_d.items():
+    for app_path, _ in schemas_d.items():
         _create_rest_api_scope_app(version, scope, app_path)
 
 
@@ -78,7 +80,7 @@ def _create_rest_api_scope_app_yml(version: str, scope: str, app_path: str, sche
 def _create_rest_api_scope_app(version: str, scope: str, app_path: str) -> None:
     """Create docs/rest_api/version/scope/app.rst (docs/rest_api/6.4.14/cmdb/firewall.rst)."""
     path: Path = ROOT.joinpath(f"docs/rest_api/{version}/{scope}/{app_path}.rst")
-    content_j2 = Path("templates/rest_api/scope_app.j2").read_text(encoding="utf-8")
+    content_j2 = TEMPLATES_DIR.joinpath("rest_api/scope_app.j2").read_text(encoding="utf-8")
     text = Template(content_j2).render(version=version, scope=scope, app_path=app_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
@@ -87,7 +89,7 @@ def _create_rest_api_scope_app(version: str, scope: str, app_path: str) -> None:
 
 def _create_rest_api_scope(version: str, scope: str, app_paths: LStr) -> None:
     """Create docs/rest_api/version/scope.rst (docs/rest_api/6.4.14/cmdb.rst)."""
-    content_j2 = Path("templates/rest_api/scope_contents.j2").read_text(encoding="utf-8")
+    content_j2 = TEMPLATES_DIR.joinpath("rest_api/scope_contents.j2").read_text(encoding="utf-8")
     text = Template(content_j2).render(version=version, scope=scope, app_paths=app_paths)
     path: Path = ROOT.joinpath(f"docs/rest_api/{version}/{scope}.rst")
     path.write_text(text, encoding="utf-8")
@@ -111,7 +113,7 @@ def create_fortigateapi_cmdb() -> None:
 
 def _create_fortigateapi__scope(scope: str, app_names: LStr) -> None:
     """Create docs/fortigateapi/cmdb/_contents.rst."""
-    content_j2 = Path(f"templates/{API_DIR}/scope_contents.j2").read_text(encoding="utf-8")
+    content_j2 = TEMPLATES_DIR.joinpath(f"{API_DIR}/scope_contents.j2").read_text(encoding="utf-8")
     text = Template(content_j2).render(
         api_class=API_CLASS,
         scope=scope,
@@ -125,7 +127,7 @@ def _create_fortigateapi__scope(scope: str, app_names: LStr) -> None:
 
 def _create_fortigateapi__scope_app(scope: str, app_name: str, model_names: LStr) -> None:
     """Create docs/fortigateapi/cmdb/firewall/_contents.rst."""
-    content_j2 = Path(f"templates/{API_DIR}/app_contents.j2").read_text(encoding="utf-8")
+    content_j2 = TEMPLATES_DIR.joinpath(f"{API_DIR}/app_contents.j2").read_text(encoding="utf-8")
     text = Template(content_j2).render(
         api_class=API_CLASS,
         scope=scope,
@@ -140,7 +142,7 @@ def _create_fortigateapi__scope_app(scope: str, app_name: str, model_names: LStr
 
 def _create_fortigateapi__scope_app_model(scope: str, app_name: str, model_name: str) -> None:
     """Create docs/fortigateapi/cmdb/firewall/address.rst."""
-    content_j2 = Path(f"templates/{API_DIR}/model_class.j2").read_text(encoding="utf-8")
+    content_j2 = TEMPLATES_DIR.joinpath(f"{API_DIR}/model_class.j2").read_text(encoding="utf-8")
     text = Template(content_j2).render(
         package=fortigate_api.__name__,
         api_class=API_CLASS,
@@ -167,7 +169,7 @@ def _usage__scope_app_model(scope: str, app_name: str, model_name: str) -> str:
 
 def create_fortigate(class_name: str) -> None:
     """Create docs/fortigateapi/FortiGate.rst or FortiGateAPI.rst."""
-    content_j2 = Path(f"templates/fortigateapi/class_fortigate.j2").read_text(encoding="utf-8")
+    content_j2 = TEMPLATES_DIR.joinpath("fortigateapi/class_fortigate.j2").read_text(encoding="utf-8")
     text = Template(content_j2).render(
         package=fortigate_api.__name__,
         class_name=class_name,
@@ -194,8 +196,8 @@ if __name__ == "__main__":
     logging.getLogger().addHandler(logging.StreamHandler())
 
     create_index()
-    is_json_schema_new = False
-    if is_json_schema_new:
+    IS_JSON_SCHEMA_NEW = False
+    if IS_JSON_SCHEMA_NEW:
         create_rest_api_cmdb_yml()
     create_rest_api_cmdb_rst()
     create_fortigateapi_cmdb()

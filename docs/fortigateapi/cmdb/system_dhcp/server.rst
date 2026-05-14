@@ -13,7 +13,7 @@ Usage
 
 .. code:: python
 
-    """api/v2/cmdb/system.dhcp/server
+    """api/v2/cmdb/system.dhcp/server.
     
     - Create dhcp-server
     - Get all dhcp-servers

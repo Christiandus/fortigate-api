@@ -13,7 +13,7 @@ Usage
 
 .. code:: python
 
-    """api/v2/cmdb/system/external-resource
+    """api/v2/cmdb/system/external-resource.
     
     - Create External Resources
     - Gets all external-resources from the Fortigate
