@@ -1,8 +1,8 @@
 
 .. image:: https://img.shields.io/pypi/v/fortigate-api.svg
    :target: https://pypi.python.org/pypi/fortigate-api
-.. image:: https://img.shields.io/badge/Python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue.svg
-   :target: https://pypi.python.org/pypi/logger-color
+.. image:: https://img.shields.io/badge/Python-3.12%20%7C%203.13%20%7C%203.14-blue.svg
+   :target: https://pypi.python.org/pypi/fortigate-api
 .. image:: https://img.shields.io/github/last-commit/vladimirs-git/fortigate-api
    :target: https://pypi.python.org/pypi/fortigate-api
 
@@ -15,7 +15,7 @@ Python package to configure Fortigate (Fortios) devices using REST API.
     - FortiGateAPI - Python connector to Fortigate API endpoints.
     - FortiGate - Python wrapper for the FortiOS REST API.
 
-Checked with FortiOS = v6.4.14.
+Checked with FortiOS = v7.4.x.
 Fully documented on `Read the Docs`_.
 
 
@@ -24,7 +24,7 @@ Fully documented on `Read the Docs`_.
 Requirements
 ============
 
-Python >=3.8
+Python >=3.12
 
 
 Quickstart
