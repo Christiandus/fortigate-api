@@ -3,7 +3,7 @@ FROM hub.rms.evolutiongaming.com/python:3.11.9-slim
 ENV APP_NAME=fortigate-api \
     USER=daemon \
     GROUP=daemon \
-    POETRY_VERSION=2.1.2 \
+    POETRY_VERSION=2.4.1 \
     POETRY_HOME=/opt/poetry \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
